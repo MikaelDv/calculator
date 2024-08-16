@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Calculator.css";
 import Container from "@material-ui/core/Container";
 
@@ -7,6 +7,7 @@ export default function Calculator() {
     [key: string]: (() => void) | undefined;
   };
 
+  const [resulted, setResulted] = useState<boolean>(false);
   const [firstNum, setFirstNum] = useState(0);
   const [selectedSymbol, setSelectedSymbol] = useState<string>("");
   const operations: OperationsType = {
@@ -21,7 +22,10 @@ export default function Calculator() {
   const fontSize = num.toString().length > 9 ? "3.35em" : num.toString().length > 8 ? "3.8em" : num.toString().length > 7 ? "4.24em" : "4.8em";
 
   function inputNum(e: React.MouseEvent<HTMLButtonElement>) {
-    if (num.toString().length < 9) {
+    if (resulted) {
+      setNum(Number(e.currentTarget.value));
+      setResulted(false)
+    } else if (num.toString().length < 9) {
       if (num === 0) {
         setNum(Number(e.currentTarget.value));
       } else {
@@ -29,6 +33,10 @@ export default function Calculator() {
       }
     }
   }
+
+  useEffect(() => {
+    console.log("Atualizado num e firstNum:", num, firstNum);
+  }, [num, firstNum]);
 
   function clear() {
     setNum(0);
@@ -117,6 +125,7 @@ export default function Calculator() {
     if(func !== undefined) {
       func();
       setSelectedSymbol("");
+      setResulted(true);
     } else { 
       console.log("Function not found")
     }
