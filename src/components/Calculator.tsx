@@ -49,12 +49,21 @@ export default function Calculator() {
     setFirstNum(0);
   }
 
-  function multiplyFunc() {}
+  function multiplyFunc() {
+    setNum(firstNum * num);
+    setFirstNum(0);
+  }
 
-  function subFunc() {}
+  function subFunc() {
+    setNum(firstNum - num);
+    setFirstNum(0);
+  }
 
-  function addFunc() {}
-
+  function addFunc() {
+    setNum(firstNum + num);
+    setFirstNum(0);
+  }
+    
   function divide() {
     if (firstNum === 0) {
       setFirstNum(num);
@@ -62,8 +71,44 @@ export default function Calculator() {
       setSelectedSymbol("divide");
     } else {
       setNum(firstNum / num);
-      setFirstNum(0);
+      setFirstNum(num);
       setSelectedSymbol("divide");
+    }
+  }
+
+  function multiply() {
+    if (firstNum === 0) {
+      setFirstNum(num);
+      setNum(0);
+      setSelectedSymbol("multiply");
+    } else {
+      setNum(firstNum * num);
+      setFirstNum(num);
+      setSelectedSymbol("multiply");
+    }
+  }
+
+  function subtraction() {
+    if (firstNum === 0) {
+      setFirstNum(num);
+      setNum(0);
+      setSelectedSymbol("subtraction");
+    } else {
+      setNum(firstNum - num);
+      setFirstNum(num);
+      setSelectedSymbol("subtraction");
+    }
+  }
+
+  function addition () {
+    if (firstNum === 0) {
+      setFirstNum(num);
+      setNum(0);
+      setSelectedSymbol("addition");
+    } else {
+      setNum(firstNum + num);
+      setFirstNum(num);
+      setSelectedSymbol("addition");
     }
   }
 
@@ -75,6 +120,10 @@ export default function Calculator() {
     } else { 
       console.log("Function not found")
     }
+  }
+
+  function inputDecimal() {
+    
   }
 
   return (
@@ -91,20 +140,24 @@ export default function Calculator() {
           <button onClick={inputNum} value={7}>7</button>
           <button onClick={inputNum} value={8}>8</button>
           <button onClick={inputNum} value={9}>9</button>
-          <button className="orange">X</button>
+          <button onClick={multiply} className="orange">X</button>
           <button onClick={inputNum} value={4}>4</button>
           <button onClick={inputNum} value={5}>5</button>
           <button onClick={inputNum} value={6}>6</button>
-          <button className="orange">-</button>
+          <button onClick={subtraction} className="orange">-</button>
           <button onClick={inputNum} value={1}>1</button>
           <button onClick={inputNum} value={2}>2</button>
           <button onClick={inputNum} value={3}>3</button>
-          <button className="orange">+</button>
+          <button onClick={addition} className="orange">+</button>
           <button id="butaoZero" onClick={inputNum} value={0}>0</button>
-          <button onClick={inputNum} value={","}>,</button>
+          <button onClick={inputDecimal}>,</button>
           <button onClick={() => result(selectedSymbol, operations)} className="orange">=</button>
         </div>
       </div>
     </Container>
   );
 }
+function Float(num: number): SetStateAction<number> {
+  throw new Error("Function not implemented.");
+}
+
