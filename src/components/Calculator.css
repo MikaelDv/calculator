@@ -48,10 +48,12 @@ button {
   border-radius: 2em;
   margin: 0.3em;
   color: white;
-  background-color: #505050;
+  background-color: #333333;
+  transition: all 0.3s ease-out;
 }
 
 button:hover {
+  background-color: #737373;
   cursor: pointer;
 }
 
@@ -73,10 +75,19 @@ button:hover {
 }
 
 .gray {
-  background-color: #d4d4d2;
+  background-color: #a5a5a5;
   color: black;
 }
 
+.gray:hover {
+  background-color: #d9d9d9;
+}
+
 .orange {
-  background-color: #ff9500;
+  background-color: #ff9f0a;
+}
+
+.orange:hover {
+  background-color: #ffffff;
+  color: #ff9f0a;
 }

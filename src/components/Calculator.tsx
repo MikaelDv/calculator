@@ -146,19 +146,19 @@ export default function Calculator() {
             <button onClick={clear} className="gray">C</button>
             <button onClick={plusMinus} className="gray">+/-</button>
             <button onClick={percentage} className="gray">%</button>
-            <button onClick={divide} className="orange">÷</button>
+            <button onClick={divide} className="orange" id="dvdBtn">÷</button>
             <button onClick={inputNum} value={7}>7</button>
             <button onClick={inputNum} value={8}>8</button>
             <button onClick={inputNum} value={9}>9</button>
-            <button onClick={multiply} className="orange">X</button>
+            <button onClick={multiply} className="orange" id="multiBtn">X</button>
             <button onClick={inputNum} value={4}>4</button>
             <button onClick={inputNum} value={5}>5</button>
             <button onClick={inputNum} value={6}>6</button>
-            <button onClick={subtraction} className="orange">-</button>
+            <button onClick={subtraction} className="orange" id="subBtn">-</button>
             <button onClick={inputNum} value={1}>1</button>
             <button onClick={inputNum} value={2}>2</button>
             <button onClick={inputNum} value={3}>3</button>
-            <button onClick={addition} className="orange">+</button>
+            <button onClick={addition} className="orange" id="addBtn">+</button>
             <button id="butaoZero" onClick={inputNum} value={0}>0</button>
             <button onClick={inputDecimal}>,</button>
             <button onClick={() => result(selectedSymbol, operations)} className="orange">=</button>
