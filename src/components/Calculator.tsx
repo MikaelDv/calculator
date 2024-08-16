@@ -1,4 +1,4 @@
-import { SetStateAction, useState } from "react";
+import { useState } from "react";
 import "./Calculator.css";
 import Container from "@material-ui/core/Container";
 
@@ -21,7 +21,7 @@ export default function Calculator() {
   const fontSize = num.toString().length > 9 ? "3.35em" : num.toString().length > 8 ? "3.8em" : num.toString().length > 7 ? "4.24em" : "4.8em";
 
   function inputNum(e: React.MouseEvent<HTMLButtonElement>) {
-    if (num.toString().length < 10) {
+    if (num.toString().length < 9) {
       if (num === 0) {
         setNum(Number(e.currentTarget.value));
       } else {
@@ -127,37 +127,36 @@ export default function Calculator() {
   }
 
   return (
-    <Container maxWidth="xs">
-      <div className="wrapper">
-        <div className="output">
-          <div className="firstNum" style={{ fontSize }}>{num.toLocaleString('pt-BR').toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</div>
+    <div className="all">
+      <Container maxWidth="xs">
+        <div className="wrapper">
+          <div className="output">
+            <div className="firstNum" style={{ fontSize }}>{num.toLocaleString('pt-BR').toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</div>
+          </div>
+          <div className="buttons">
+            <button onClick={clear} className="gray">C</button>
+            <button onClick={plusMinus} className="gray">+/-</button>
+            <button onClick={percentage} className="gray">%</button>
+            <button onClick={divide} className="orange">÷</button>
+            <button onClick={inputNum} value={7}>7</button>
+            <button onClick={inputNum} value={8}>8</button>
+            <button onClick={inputNum} value={9}>9</button>
+            <button onClick={multiply} className="orange">X</button>
+            <button onClick={inputNum} value={4}>4</button>
+            <button onClick={inputNum} value={5}>5</button>
+            <button onClick={inputNum} value={6}>6</button>
+            <button onClick={subtraction} className="orange">-</button>
+            <button onClick={inputNum} value={1}>1</button>
+            <button onClick={inputNum} value={2}>2</button>
+            <button onClick={inputNum} value={3}>3</button>
+            <button onClick={addition} className="orange">+</button>
+            <button id="butaoZero" onClick={inputNum} value={0}>0</button>
+            <button onClick={inputDecimal}>,</button>
+            <button onClick={() => result(selectedSymbol, operations)} className="orange">=</button>
+          </div>
         </div>
-        <div className="buttons">
-          <button onClick={clear} className="gray">C</button>
-          <button onClick={plusMinus} className="gray">+/-</button>
-          <button onClick={percentage} className="gray">%</button>
-          <button onClick={divide} className="orange">÷</button>
-          <button onClick={inputNum} value={7}>7</button>
-          <button onClick={inputNum} value={8}>8</button>
-          <button onClick={inputNum} value={9}>9</button>
-          <button onClick={multiply} className="orange">X</button>
-          <button onClick={inputNum} value={4}>4</button>
-          <button onClick={inputNum} value={5}>5</button>
-          <button onClick={inputNum} value={6}>6</button>
-          <button onClick={subtraction} className="orange">-</button>
-          <button onClick={inputNum} value={1}>1</button>
-          <button onClick={inputNum} value={2}>2</button>
-          <button onClick={inputNum} value={3}>3</button>
-          <button onClick={addition} className="orange">+</button>
-          <button id="butaoZero" onClick={inputNum} value={0}>0</button>
-          <button onClick={inputDecimal}>,</button>
-          <button onClick={() => result(selectedSymbol, operations)} className="orange">=</button>
-        </div>
-      </div>
-    </Container>
+      </Container>
+    </div>
   );
-}
-function Float(num: number): SetStateAction<number> {
-  throw new Error("Function not implemented.");
 }
 

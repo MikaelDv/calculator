@@ -2,6 +2,15 @@
 
 * {
   font-family: "Inter", sans-serif;
+  box-sizing: border-box;
+}
+
+.all {
+  height: 55em;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .buttons {
@@ -60,6 +69,7 @@ button:hover {
   padding: 1em;
   padding-bottom: 1.8em;
   background-color: black;
+  box-shadow: 0 0 10em rgba(0, 0, 0, 0.8);
 }
 
 .gray {
