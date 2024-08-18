@@ -9,6 +9,7 @@ export default function Calculator() {
 
   const [resulted, setResulted] = useState<boolean>(false);
   const [firstNum, setFirstNum] = useState(0);
+  const [decimal, setDecimal] = useState<boolean>(false);
   const [selectedSymbol, setSelectedSymbol] = useState<string>("");
   const operations: OperationsType = {
     "divide": divideFunc,
@@ -132,15 +133,18 @@ export default function Calculator() {
   }
 
   function inputDecimal() {
-    
+    setDecimal(true);
   }
+
+  const numFormatted = num.toLocaleString('pt-BR').toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  const finalResult = decimal == true ? numFormatted + "," : numFormatted;
 
   return (
     <div className="all">
       <Container maxWidth="xs">
         <div className="wrapper">
           <div className="output">
-            <div className="firstNum" style={{ fontSize }}>{num.toLocaleString('pt-BR').toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</div>
+            <div className="firstNum" style={{ fontSize }}>{finalResult}</div>
           </div>
           <div className="buttons">
             <button onClick={clear} className="gray">C</button>
