@@ -11,6 +11,7 @@ export default function Calculator() {
   const [resulted, setResulted] = useState<boolean>(false);
   const [firstNum, setFirstNum] = useState<number>(0);
   const [selectedSymbol, setSelectedSymbol] = useState<string>("");
+  const [fontSize, setFontSize] = useState<string>('4.8em');
   const operations: OperationsType = {
     "divide": divideFunc,
     "multiply": multiplyFunc,
@@ -18,7 +19,41 @@ export default function Calculator() {
     "addition": addFunc
   }
 
-  const fontSize = num.toString().length > 9 ? "3.35em" : num.toString().length > 8 ? "3.8em" : num.toString().length > 7 ? "4.24em" : "4.8em";
+  useEffect(() => { 
+    const mediaQueryList = window.matchMedia('(max-width: 768px)');
+
+    const calculateFontSize = (value: string) => {
+      let baseSize: string;
+
+      if (mediaQueryList.matches) {
+        baseSize = value.length > 9 ? '2.95em'
+                   : value.length > 8 ? '3.4em'
+                   : value.length > 7 ? '3.84em'
+                   : '4.4em';
+      } else {
+        baseSize = value.length > 9 ? '3.35em'
+                   : value.length > 8 ? '3.8em'
+                   : value.length > 7 ? '4.24em'
+                   : '4.8em';
+      }
+
+      return baseSize;
+    };
+
+    setFontSize(calculateFontSize(num));
+
+    const handleMediaQueryChange = () => {
+      setFontSize(calculateFontSize(num));
+    };
+
+    mediaQueryList.addEventListener('change', handleMediaQueryChange);
+
+    return () => {
+      mediaQueryList.removeEventListener('change', handleMediaQueryChange);
+    };
+  }, [num]);
+
+
 
   function inputNum(e: React.MouseEvent<HTMLButtonElement>) {
     if (resulted) {
@@ -157,7 +192,7 @@ export default function Calculator() {
       <Container maxWidth="xs">
         <div className="wrapper">
           <div className="output">
-            <div className="firstNum" style={{ fontSize }}>{numFormatted}</div>
+            <div className="result" style={{ fontSize }}>{numFormatted}</div>
           </div>
           <div className="buttons">
             <button onClick={clear} className="gray button">C</button>
