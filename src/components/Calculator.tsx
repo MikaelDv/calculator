@@ -27,9 +27,9 @@ export default function Calculator() {
 
       if (mediaQueryList.matches) {
         baseSize = value.length > 9 ? '2.75em'
-                   : value.length > 8 ? '3.2em'
-                   : value.length > 7 ? '3.64em'
-                   : '4.2em';
+                   : value.length > 8 ? '3em'
+                   : value.length > 7 ? '3.25em'
+                   : '3.7em';
       } else {
         baseSize = value.length > 9 ? '3.35em'
                    : value.length > 8 ? '3.8em'
