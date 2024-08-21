@@ -147,7 +147,7 @@ export default function Calculator() {
       return decimalPart ? `${integerPart},${decimalPart}` : integerPart + ",";
     } 
     
-    return number;
+    return number.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   }
 
   const numFormatted = formatNumber(num);
