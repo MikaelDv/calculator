@@ -3,11 +3,12 @@
 * {
   font-family: "Inter", sans-serif;
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 .all {
   height: 96vh;
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -90,4 +91,36 @@ button:hover {
 .orange:hover {
   background-color: #ffffff;
   color: #ff9f0a;
+}
+
+@media screen and (max-width:470px) {
+  html {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .all {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+  }
+
+  .wrapper {
+    width: 21.4em;
+    height: 33.4em;
+    border-radius: 2em;
+  }
+
+  button {
+    width: 3em;
+    height: 3em;
+    font-size: 1.3em;
+  }
+
+  #butaoZero {
+    width: 6.5em;
+  }
 }
