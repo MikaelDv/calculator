@@ -26,10 +26,10 @@ export default function Calculator() {
       let baseSize: string;
 
       if (mediaQueryList.matches) {
-        baseSize = value.length > 9 ? '2.95em'
-                   : value.length > 8 ? '3.4em'
-                   : value.length > 7 ? '3.84em'
-                   : '4.4em';
+        baseSize = value.length > 9 ? '2.75em'
+                   : value.length > 8 ? '3.2em'
+                   : value.length > 7 ? '3.64em'
+                   : '4.2em';
       } else {
         baseSize = value.length > 9 ? '3.35em'
                    : value.length > 8 ? '3.8em'
